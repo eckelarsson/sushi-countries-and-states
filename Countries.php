@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Sushi\Sushi;
 
 class Countries extends Model
 {
-    use Sushi\Sushi;
+    use Sushi;
 
 
     protected static function boot()
@@ -270,5 +271,15 @@ class Countries extends Model
             ['code' => 'ZM', 'name' => 'Zambia'],
             ['code' => 'ZW', 'name' => 'Zimbabwe']
         ];
+    }
+
+    public function inEurope()
+    {
+        $euEountrycodes = array(
+            'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'EL',
+            'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV',
+            'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'
+        );
+        return (in_array($this->code, $euEountrycodes));
     }
 }
